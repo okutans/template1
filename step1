@@ -1,0 +1,9 @@
+find . -type f -name 'index.html?*.html' | while read file; do
+  newname=$(echo "$file" | sed -E 's/index\.html\?(.*)\.html/\1.html/')
+  mv "$file" "$newname"
+done
+
+find . -type f -name '*\?ver=*' | while read file; do
+  newname=$(echo "$file" | sed -E 's/\?ver=[a-z0-9.]+//')
+  mv "$file" "$newname"
+done
